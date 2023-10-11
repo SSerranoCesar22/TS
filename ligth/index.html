@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ligth and switch</title>
+    <link rel="stylesheet" href="Styles/style.css">
+</head>
+
+<body>
+    <div id="switch">
+        <button id="buttonSwitch"><img src="images/boff.jpg" id="switchOff" alt="switchOff">
+        </button>
+        <div id="ligth">
+            <img src="images/off.jpg" alt="ligthOff">
+        </div>
+    </div>
+    <div id="adjustLigth">
+        <div class="progress-container1">
+            <div class="progress-bar" id="progress"></div>
+        </div>
+        <div>
+            <input type="range" id="range" min="0" max="100" step="1">
+            <div id="value">Light Bulb Zoom</div>
+        </div>
+        <div>
+             <div class="progress-container2">
+        <div class="progress-bar" id="progress2"></div>
+    </div>
+            <input type="range" id="range2" min="0" max="100" step="1">
+            <div id="value2">Light level</div>
+        </div>
+    </div>
+    <script src="outputFilesJS/main.js"></script>
+</body>
+
+</html>
