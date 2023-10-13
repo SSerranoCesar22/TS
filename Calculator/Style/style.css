@@ -1,0 +1,121 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5em;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10em;
+    padding: 3em;
+    width: 30em;
+    height: 40em;
+    background-color: #3b4667;
+}
+#del,#reset{
+    background-color: #66719c;
+    color: #ced8e6 ;
+}
+#equal{
+    background-color: #c84133;
+    color: #ced8e6 ;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #3498db; /* Color del contorno */
+  background-color: #3498db; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+#screen {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 1px solid black;
+    padding-bottom: 10px;
+    width: 21em;
+    height: 3em;
+    background-color: #252627;
+    color: #91939a;
+    font-size: 20px;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 30em;
+
+    & #top {
+        display: flex;
+        flex-direction: row;
+
+        & button {
+            margin: 2em;
+            width: 5em;
+            height: 4em;
+        }
+
+    }
+
+    & #medium {
+        display: flex;
+        flex-direction: row;
+        
+
+        & button {
+            margin: 2em;
+            width: 5em;
+            height: 4em;
+        }
+    }
+
+    & #medium2 {
+        display: flex;
+        flex-direction: row;
+
+        & button {
+            margin: 2em;
+            width: 5em;
+            height: 4em;
+        }
+    }
+
+    & #medium3 {
+        display: flex;
+        flex-direction: row;
+
+        & button {
+            margin: 2em;
+            width: 5em;
+            height: 4em;
+        }
+    }
+
+    & #bottom {
+        display: flex;
+        flex-direction: row;
+
+        & button {
+            margin: 2em;
+            width: 14em;
+            height: 4em;
+        }
+    }
+}
