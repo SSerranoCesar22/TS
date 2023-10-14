@@ -4,7 +4,13 @@ body {
     justify-content: center;
     padding-top: 5em;
 }
-
+h1{
+    align-self: flex-start;
+    position: absolute;
+    left: 25em;
+    text-align: center;
+    font-size: 30px;
+}
 section {
     display: flex;
     flex-direction: column;
