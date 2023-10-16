@@ -19,10 +19,26 @@ function inputScreen() {
                 lastResult = "";
             }
             const value = button.getAttribute("data-value") || "";
-            expression += value;
-            updateScreen();
+
+            if (expression.length < 20) { // Limitar a 5 caracteres
+                expression += value;
+                updateScreen();
+            }
         });
     });
+
+    decimalButton?.addEventListener("click", () => {
+        if (lastResult !== "") {
+            expression = "";
+            lastResult = "";
+        }
+        if (!expression.endsWith(".") && expression.length < 4) { // Limitar a 5 caracteres incluyendo el decimal
+            expression += ".";
+            updateScreen();
+        }
+    });
+}
+
 
     decimalButton?.addEventListener("click", () => {
         if (lastResult !== "") {
@@ -34,7 +50,6 @@ function inputScreen() {
             updateScreen();
         }
     });
-}
 
 function setSymbol(symbol: string) {
     if (lastResult !== "") {
@@ -69,8 +84,10 @@ function operation() {
             const sanitizedExpression = expression.replace(/X/g, '*'); 
             const result = eval(sanitizedExpression);
             if (isFinite(result)) {
+            const resultString = result.toString(); 
                 resultParagraph.textContent = result.toString();
                 lastResult = result.toString();
+                
             } else {
                 resultParagraph.textContent = "Error";
                 lastResult = "Error";

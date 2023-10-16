@@ -19,8 +19,10 @@ function inputScreen() {
                 lastResult = "";
             }
             const value = button.getAttribute("data-value") || "";
-            expression += value;
-            updateScreen();
+            if (expression.length < 20) { // Limitar a 5 caracteres
+                expression += value;
+                updateScreen();
+            }
         });
     });
     decimalButton === null || decimalButton === void 0 ? void 0 : decimalButton.addEventListener("click", () => {
@@ -28,12 +30,22 @@ function inputScreen() {
             expression = "";
             lastResult = "";
         }
-        if (!expression.endsWith(".")) {
+        if (!expression.endsWith(".") && expression.length < 4) { // Limitar a 5 caracteres incluyendo el decimal
             expression += ".";
             updateScreen();
         }
     });
 }
+decimalButton === null || decimalButton === void 0 ? void 0 : decimalButton.addEventListener("click", () => {
+    if (lastResult !== "") {
+        expression = "";
+        lastResult = "";
+    }
+    if (!expression.endsWith(".")) {
+        expression += ".";
+        updateScreen();
+    }
+});
 function setSymbol(symbol) {
     if (lastResult !== "") {
         lastResult = "";
@@ -64,6 +76,7 @@ function operation() {
             const sanitizedExpression = expression.replace(/X/g, '*');
             const result = eval(sanitizedExpression);
             if (isFinite(result)) {
+                const resultString = result.toString();
                 resultParagraph.textContent = result.toString();
                 lastResult = result.toString();
             }
