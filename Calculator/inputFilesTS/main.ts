@@ -6,11 +6,81 @@ const del = document.getElementById('del') as HTMLElement;
 const scrDel = document.querySelectorAll("#screen p");
 let expression = "";
 let lastResult = "";
+let operatorPressed = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     inputScreen();
+    
 });
+window.addEventListener('keydown',function(event){
+    const key = event.key;
+    switch (key) {
+        case '0':
+            expression += key;
+            updateScreen(); 
+            break;
+        case '1':
+            expression += key;
+            updateScreen(); 
+            break;
+        case '2':
+            expression += key;
+            updateScreen();
+            break;
+        case '3':
+            expression += key;
+            updateScreen();
+            break;
+        case '4':
+            expression += key;
+            updateScreen();
+            break;
+        case '5':
+            expression += key;
+            updateScreen();
+            break;
+        case '6':
+            expression += key;
+            updateScreen();
+            break;
+        case '7':
+            expression += key;
+            updateScreen();
+            break;
+        case '8':
+            expression += key;
+            updateScreen();
+            break;
+        case '9':
+            expression += key;
+            updateScreen();
+            break;
+        case '.':
+            expression += key;
+            updateScreen();
+            break;
+        case '/':
+            setSymbol(key);
+            break;
+        case '*':
+            setSymbol(key);
+            break;
+        case '-':
+            setSymbol(key);
+            break;
+        case '+':
+            setSymbol(key);
+            break;
+        case 'Backspace':
+            deleteLastCharacter();
+        case 'Enter':
+            operation();
 
+        default:
+            break;
+    }
+
+});
 function inputScreen() {
     numberButtons.forEach(button => {
         button.addEventListener("click", () => {
@@ -20,7 +90,7 @@ function inputScreen() {
             }
             const value = button.getAttribute("data-value") || "";
 
-            if (expression.length < 20) { // Limitar a 5 caracteres
+            if (expression.length < 20) { 
                 expression += value;
                 updateScreen();
             }
@@ -32,59 +102,66 @@ function inputScreen() {
             expression = "";
             lastResult = "";
         }
-        if (!expression.endsWith(".") && expression.length < 4) { // Limitar a 5 caracteres incluyendo el decimal
-            expression += ".";
-            updateScreen();
+    
+        if (operatorPressed) {
+            expression += "0";
         }
+    
+        const components = expression.split(/([+*/-])/);
+        const secondValue = components.slice(-1)[0];
+    
+        if (!secondValue.includes(".")) {
+            expression += ".";
+        }
+    
+        operatorPressed = false; 
+        updateScreen();
     });
 }
-
-
-    decimalButton?.addEventListener("click", () => {
+    function setSymbol(symbol: string) {
         if (lastResult !== "") {
-            expression = "";
             lastResult = "";
         }
-        if (!expression.endsWith(".")) {
-            expression += ".";
-            updateScreen();
+    
+        const lastChar = expression.trim().slice(-1); 
+    
+        if (symbol === '-' && isSymbol(lastChar) && lastChar !== '-') {
+            expression += ' -';
+        } else if (isSymbol(symbol) && isSymbol(lastChar)) {
+            return;
+        } else {
+            if (symbol === "X") {
+                expression += " * ";
+            } else {
+                expression += ` ${symbol} `;
+            }
         }
-    });
-
-function setSymbol(symbol: string) {
-    if (lastResult !== "") {
-        lastResult = "";
+        updateScreen();
     }
-    if (symbol === "X") {
-        expression += " * ";
-    } else {
-        expression += ` ${symbol} `;
+    
+    function isSymbol(char: string) {
+        const symbols = ["+", "-", "X", "/"];
+        return symbols.includes(char);
     }
-    updateScreen();
-}
-
+    
 function updateScreen() {
     const paragraph = scr.querySelector("p");
     if (paragraph) {
         paragraph.textContent = expression;
     }
 }
-
 function cleanScreen() {
     expression = "";
     lastResult = "";
     updateScreen();
 }
-
 function operation() {
     const resultParagraph = scr.querySelector("p");
-
     if (resultParagraph) {
         try {
             const sanitizedExpression = expression.replace(/X/g, '*'); 
             const result = eval(sanitizedExpression);
             if (isFinite(result)) {
-            const resultString = result.toString(); 
                 resultParagraph.textContent = result.toString();
                 lastResult = result.toString();
                 
@@ -98,7 +175,6 @@ function operation() {
         }
     }
 }
-
 document.getElementById('add')?.addEventListener("click", () => setSymbol("+"));
 document.getElementById('subtract')?.addEventListener("click", () => setSymbol("-"));
 document.getElementById('divide')?.addEventListener("click", () => setSymbol("/"));
