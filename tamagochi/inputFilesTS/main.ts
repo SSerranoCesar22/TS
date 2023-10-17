@@ -19,9 +19,10 @@ const winValue1 = 30;
 const winValue2 = 25;
 const lossValue1 = 20;
 const lossValue2 = 10;
-const idleTime = 60000;
+const bars = [bar1, bar2, bar3, bar4];
+const idleTimers: { [key: string]: number } = {};
+const idleTime = 30000;
 let isWin = true;
-let idleTimeout;
 
 if (bar1 && bar2 && bar3 && bar4 && healthBar) {
     const randomValue1 = randomValue(40, 60);
@@ -66,7 +67,8 @@ function randomValue(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 brazil?.addEventListener('click', function () {
-    isWin = randomBoolean(isWin);
+    resetIdleTimer(bar1);
+        isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
         bar1.value = newValue <= 100 ? newValue : 100; // Asegura que no supere 100
@@ -80,7 +82,8 @@ brazil?.addEventListener('click', function () {
     isDead();
 });
 france?.addEventListener('click', function () {
-    isWin = randomBoolean(isWin);
+    resetIdleTimer(bar1);
+        isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
         bar1.value = newValue <= 100 ? newValue : 100; // Asegura que no supere 100
@@ -94,7 +97,8 @@ france?.addEventListener('click', function () {
     isDead();
 });
 badge?.addEventListener('click', function () {
-    isWin = randomBoolean(isWin);
+    resetIdleTimer(bar1);
+        isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
         bar1.value = newValue <= 100 ? newValue : 100; // Asegura que no supere 100
@@ -108,6 +112,7 @@ badge?.addEventListener('click', function () {
     isDead();
 });
 champions?.addEventListener('click', function () {
+        resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -122,6 +127,7 @@ champions?.addEventListener('click', function () {
     isDead();
 });
 copa?.addEventListener('click', function () {
+        resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -136,6 +142,7 @@ copa?.addEventListener('click', function () {
     isDead();
 });
 ligaEa?.addEventListener('click', function () {
+        resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -150,6 +157,7 @@ ligaEa?.addEventListener('click', function () {
     isDead();
 });
 fcb?.addEventListener('click', function () {
+        resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -164,6 +172,7 @@ fcb?.addEventListener('click', function () {
     isDead();
 });
 atm?.addEventListener('click', function () {
+        resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -178,6 +187,7 @@ atm?.addEventListener('click', function () {
     isDead();
 });
 premier?.addEventListener('click', function () {
+        resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -192,6 +202,7 @@ premier?.addEventListener('click', function () {
     isDead();
 });
 mbappe?.addEventListener('click', function () {
+        resetIdleTimer(bar4);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar4.value + randomValue(winValue1, winValue2);
@@ -206,6 +217,7 @@ mbappe?.addEventListener('click', function () {
     isDead();
 });
 superlig?.addEventListener('click', function () {
+        resetIdleTimer(bar4);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar4.value + randomValue(winValue1, winValue2);
@@ -251,4 +263,21 @@ function isDead(){
 
         img.style.filter = 'brightness(1)';
 }
+}
+
+function reduceBarValueRandomly(bar :HTMLProgressElement) {
+    const newValue = bar.value - randomValue(lossValue1, lossValue2); 
+    bar.value = newValue >= 0 ? newValue : 0;
+    updateProgressBar(bar, bar.value);
+    averageLife();
+    isDead();
+}
+
+function startIdleTimer(bar: HTMLProgressElement) {
+    clearTimeout(idleTimers[bar.id]);
+    idleTimers[bar.id] = setTimeout(() => reduceBarValueRandomly(bar), idleTime);
+}
+function resetIdleTimer(bar: HTMLProgressElement) {
+    clearTimeout(idleTimers[bar.id]);
+    startIdleTimer(bar);
 }

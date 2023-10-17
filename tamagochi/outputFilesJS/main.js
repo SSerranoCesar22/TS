@@ -20,9 +20,10 @@ const winValue1 = 30;
 const winValue2 = 25;
 const lossValue1 = 20;
 const lossValue2 = 10;
-const idleTime = 60000;
+const bars = [bar1, bar2, bar3, bar4];
+const idleTimers = {};
+const idleTime = 30000;
 let isWin = true;
-let idleTimeout;
 if (bar1 && bar2 && bar3 && bar4 && healthBar) {
     const randomValue1 = randomValue(40, 60);
     const randomValue2 = randomValue(40, 60);
@@ -63,6 +64,7 @@ function randomValue(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 brazil === null || brazil === void 0 ? void 0 : brazil.addEventListener('click', function () {
+    resetIdleTimer(bar1);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
@@ -78,6 +80,7 @@ brazil === null || brazil === void 0 ? void 0 : brazil.addEventListener('click',
     isDead();
 });
 france === null || france === void 0 ? void 0 : france.addEventListener('click', function () {
+    resetIdleTimer(bar1);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
@@ -93,6 +96,7 @@ france === null || france === void 0 ? void 0 : france.addEventListener('click',
     isDead();
 });
 badge === null || badge === void 0 ? void 0 : badge.addEventListener('click', function () {
+    resetIdleTimer(bar1);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar1.value + randomValue(winValue1, winValue2);
@@ -108,6 +112,7 @@ badge === null || badge === void 0 ? void 0 : badge.addEventListener('click', fu
     isDead();
 });
 champions === null || champions === void 0 ? void 0 : champions.addEventListener('click', function () {
+    resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -123,6 +128,7 @@ champions === null || champions === void 0 ? void 0 : champions.addEventListener
     isDead();
 });
 copa === null || copa === void 0 ? void 0 : copa.addEventListener('click', function () {
+    resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -138,6 +144,7 @@ copa === null || copa === void 0 ? void 0 : copa.addEventListener('click', funct
     isDead();
 });
 ligaEa === null || ligaEa === void 0 ? void 0 : ligaEa.addEventListener('click', function () {
+    resetIdleTimer(bar2);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar2.value + randomValue(winValue1, winValue2);
@@ -153,6 +160,7 @@ ligaEa === null || ligaEa === void 0 ? void 0 : ligaEa.addEventListener('click',
     isDead();
 });
 fcb === null || fcb === void 0 ? void 0 : fcb.addEventListener('click', function () {
+    resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -168,6 +176,7 @@ fcb === null || fcb === void 0 ? void 0 : fcb.addEventListener('click', function
     isDead();
 });
 atm === null || atm === void 0 ? void 0 : atm.addEventListener('click', function () {
+    resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -183,6 +192,7 @@ atm === null || atm === void 0 ? void 0 : atm.addEventListener('click', function
     isDead();
 });
 premier === null || premier === void 0 ? void 0 : premier.addEventListener('click', function () {
+    resetIdleTimer(bar3);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar3.value + randomValue(winValue1, winValue2);
@@ -198,6 +208,7 @@ premier === null || premier === void 0 ? void 0 : premier.addEventListener('clic
     isDead();
 });
 mbappe === null || mbappe === void 0 ? void 0 : mbappe.addEventListener('click', function () {
+    resetIdleTimer(bar4);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar4.value + randomValue(winValue1, winValue2);
@@ -213,6 +224,7 @@ mbappe === null || mbappe === void 0 ? void 0 : mbappe.addEventListener('click',
     isDead();
 });
 superlig === null || superlig === void 0 ? void 0 : superlig.addEventListener('click', function () {
+    resetIdleTimer(bar4);
     isWin = randomBoolean(isWin);
     if (isWin) {
         const newValue = bar4.value + randomValue(winValue1, winValue2);
@@ -253,4 +265,19 @@ function isDead() {
     else {
         img.style.filter = 'brightness(1)';
     }
+}
+function reduceBarValueRandomly(bar) {
+    const newValue = bar.value - randomValue(lossValue1, lossValue2);
+    bar.value = newValue >= 0 ? newValue : 0;
+    updateProgressBar(bar, bar.value);
+    averageLife();
+    isDead();
+}
+function startIdleTimer(bar) {
+    clearTimeout(idleTimers[bar.id]);
+    idleTimers[bar.id] = setTimeout(() => reduceBarValueRandomly(bar), idleTime);
+}
+function resetIdleTimer(bar) {
+    clearTimeout(idleTimers[bar.id]);
+    startIdleTimer(bar);
 }
