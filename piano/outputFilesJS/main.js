@@ -19,3 +19,17 @@ document.addEventListener('keydown', (event) => {
         playSound(event.key);
     }
 });
+document.addEventListener("keyup", (event) => {
+    const key = event.key.toLowerCase();
+    const keyElement = document.querySelector(`[data-key="${key}"]`);
+    if (keyElement) {
+        keyElement.classList.remove("active");
+    }
+});
+document.addEventListener("keydown", (event) => {
+    const key = event.key.toLowerCase(); // Convierte la tecla a minúsculas
+    const keyElement = document.querySelector(`[data-key="${key}"]`);
+    if (keyElement) {
+        keyElement.classList.add("active");
+    }
+});
