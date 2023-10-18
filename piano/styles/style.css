@@ -1,0 +1,43 @@
+/* Estilo para el contenedor principal */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; /* Cambié el color de fondo a un tono más oscuro */
+    height: 300px; /* Ajusté la altura */
+}
+
+/* Estilo para las teclas del piano */
+.piano-keys {
+    display: flex;
+    background-color: #fff;
+    height: 200px; /* Ajusté la altura */
+    width: 70%; /* Ajusté el ancho */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agregué una sombra al piano */
+    border-radius: 5px; /* Añadí un borde redondeado al piano */
+}
+
+/* Estilo para las teclas blancas */
+.white {
+    width: 10%; /* Ajusté el ancho de las teclas blancas */
+    height: 100%;
+    border-radius: 5px; /* Añadí un borde redondeado a las teclas blancas */
+    background: linear-gradient(#fff 96%, #eee 4%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Añadí una pequeña sombra a las teclas blancas */
+    transition: background 0.3s; /* Agregué una transición para el efecto 'active' */
+}
+
+.piano-keys .white.active {
+    background: #fff; /* Cambié el fondo al hacer clic (efecto 'active') */
+}
+
+/* Estilo para las teclas negras */
+.black {
+    z-index: 2;
+    width: 6%; /* Ajusté el ancho de las teclas negras */
+    height: 80%; /* Ajusté la altura de las teclas negras */
+    border-radius: 0 0 5px 5px;
+    background: #333; /* Cambié el color de fondo de las teclas negras */
+    color: #fff; /* Cambié el color del texto a blanco */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); /* Añadí una pequeña sombra a las teclas negras */
+}
