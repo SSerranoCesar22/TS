@@ -1,11 +1,11 @@
 "use strict";
 class QuizForm {
     constructor() {
+        var _a;
         this.form = document.getElementById("myForm");
-        this.question = document.getElementById("question");
         this.message = document.getElementById("isCorrect");
-        this.submit = document.getElementById("submit");
         this.answerButtons = document.querySelectorAll(".answer");
+        this.restart = document.getElementById('restartGame');
         this.categories = {
             geography: ["Nilo", "Camberra", "Pacific Ocean", "South America"],
             science: ["Au", "Jupiter", "6", "Oxygen"],
@@ -115,6 +115,9 @@ class QuizForm {
             this.form.addEventListener("click", this.handleFormClick.bind(this));
             this.clickButton();
         }
+        (_a = this.restart) === null || _a === void 0 ? void 0 : _a.addEventListener('click', _ => {
+            location.reload();
+        });
     }
     handleFormClick(event) {
         event.preventDefault();

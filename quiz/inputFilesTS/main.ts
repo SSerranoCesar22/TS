@@ -1,9 +1,7 @@
 class QuizForm{
     
     private form: HTMLFormElement | null;
-    private question: HTMLElement | null;
     private message!: HTMLParagraphElement ;
-    private submit: HTMLElement | null ;
     private answerButtons : NodeListOf<Element>;
     private categories: { [key: string]: string[] };
     private questions: { [key: string]: QuestionAndAnswers[] };
@@ -11,14 +9,14 @@ class QuizForm{
     private correctAnswer: number;
     private failedAnswer: number;
     private currentCategory: string;
+    private restart: HTMLButtonElement | null; 
     
     constructor(){
         
   this.form = document.getElementById("myForm") as HTMLFormElement;
-  this.question = document.getElementById("question") as HTMLElement;
   this.message = document.getElementById("isCorrect") as HTMLParagraphElement;
-  this.submit = document.getElementById("submit");
   this.answerButtons = document.querySelectorAll(".answer");
+  this.restart = document.getElementById('restartGame') as HTMLButtonElement | null;
   this.categories = { 
     geography: ["Nilo", "Camberra","Pacific Ocean","South America"],
     science: ["Au", "Jupiter","6", "Oxygen"],
@@ -131,7 +129,9 @@ class QuizForm{
     this.form.addEventListener("click", this.handleFormClick.bind(this));
     this.clickButton();
 }
-
+this.restart?.addEventListener('click', _ => {
+  location.reload();
+})
 }
 
 private handleFormClick(event:Event) : void{
@@ -224,6 +224,9 @@ private updateQuestion() {
     }
   }
 }
+  
+
+
 }
 
 

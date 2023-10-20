@@ -83,3 +83,20 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
+#restartGame {
+    width: 20em;
+    height: 5em;
+    background-color: salmon;
+    color: white;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 46.5em;
+    margin-bottom: 10px;
+}
