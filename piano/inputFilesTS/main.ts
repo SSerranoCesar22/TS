@@ -1,40 +1,53 @@
+class Piano {
+    private pianoKeys: NodeListOf<Element>;
+    private allKeys: string[] = [];
+    private audio: HTMLAudioElement;
 
-const pianoKeys = document.querySelectorAll("#piano-keys .key");
-let allKeys : string[] = [],
-audio = new Audio(`tunes/a.wav`); //object audio
-const playSound = (key:string)=>{
-const click = document.querySelectorAll(`[data-key="tunes/${key}.wav"]`)// audio = new Audio(`tunes/a.wav`); 
-audio.src = `tunes/${key}.wav`;
-audio.play();
-click.forEach((element) => {
-    element.classList.add('active');
-});
-setTimeout(() => {
-    click.forEach((element) => {
-        element.classList.remove('active');
-    });
-}, 150);
+    constructor() {
+        this.pianoKeys = document.querySelectorAll("#piano-keys .key");
+        this.audio = new Audio('tunes/a.wav');
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key >= 'a' && event.key <= 'z') {
+                this.playSound(event.key.toLowerCase()); // Convierte la tecla a minúsculas
+                this.activateKey(event.key.toLowerCase());
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key >= 'a' && event.key <= 'z') {
+                this.deactivateKey(event.key.toLowerCase()); // Convierte la tecla a minúsculas
+            }
+        });
+    }
+
+    private playSound = (key: string) => {
+        const click = document.querySelectorAll(`[data-key="tunes/${key}.wav"]`);
+        this.audio.src = `tunes/${key}.wav`;
+        this.audio.play();
+        click.forEach((element) => {
+            element.classList.add('active');
+        });
+        setTimeout(() => {
+            click.forEach((element) => {
+                element.classList.remove('active');
+            });
+        }, 150);
+    }
+
+    private activateKey(key: string) {
+        const keyElement = document.querySelector(`[data-key="${key}"]`);
+        if (keyElement) {
+            keyElement.classList.add("active");
+        }
+    }
+
+    private deactivateKey(key: string) {
+        const keyElement = document.querySelector(`[data-key="${key}"]`);
+        if (keyElement) {
+            keyElement.classList.remove("active");
+        }
+    }
 }
-document.addEventListener('keydown', (event) => {
-    if (event.key >= 'a' && event.key <= 'z') {
-        playSound(event.key);
-    }
-});
 
-
-document.addEventListener("keyup", (event) => {
-    const key = event.key.toLowerCase();
-    const keyElement = document.querySelector(`[data-key="${key}"]`);
-    
-    if (keyElement) {
-        keyElement.classList.remove("active");
-    }
-});
-document.addEventListener("keydown", (event) => {
-    const key = event.key.toLowerCase(); // Convierte la tecla a minúsculas
-    const keyElement = document.querySelector(`[data-key="${key}"]`);
-    
-    if (keyElement) {
-        keyElement.classList.add("active");
-    }
-});
+const piano = new Piano();
