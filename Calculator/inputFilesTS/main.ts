@@ -1,194 +1,171 @@
-const scr = document.getElementById('screen') as HTMLElement;
-const numberButtons = document.querySelectorAll(".number");
-const decimalButton = document.querySelector(".decimal");
-const clear = document.getElementById('reset') as HTMLElement;
-const del = document.getElementById('del') as HTMLElement;
-const scrDel = document.querySelectorAll("#screen p");
-let expression = "";
-let lastResult = "";
-let operatorPressed = false;
+class Calculator {
+    private scr ;
+    private numberButtons;
+    private decimalButton;
+    private expression;
+    private lastResult;
+    private operatorPressed;
+    constructor() {
+        this.scr = document.getElementById('screen') as HTMLElement;
+        this.numberButtons = document.querySelectorAll(".number");
+        this.decimalButton = document.querySelector(".decimal");
+        this.expression = "";
+        this.lastResult = "";
+        this.operatorPressed = false;
 
-document.addEventListener("DOMContentLoaded", function () {
-    inputScreen();
-    
-});
-window.addEventListener('keydown',function(event){
-    const key = event.key;
-    switch (key) {
-        case '0':
-            expression += key;
-            updateScreen(); 
-            break;
-        case '1':
-            expression += key;
-            updateScreen(); 
-            break;
-        case '2':
-            expression += key;
-            updateScreen();
-            break;
-        case '3':
-            expression += key;
-            updateScreen();
-            break;
-        case '4':
-            expression += key;
-            updateScreen();
-            break;
-        case '5':
-            expression += key;
-            updateScreen();
-            break;
-        case '6':
-            expression += key;
-            updateScreen();
-            break;
-        case '7':
-            expression += key;
-            updateScreen();
-            break;
-        case '8':
-            expression += key;
-            updateScreen();
-            break;
-        case '9':
-            expression += key;
-            updateScreen();
-            break;
-        case '.':
-            expression += key;
-            updateScreen();
-            break;
-        case '/':
-            setSymbol(key);
-            break;
-        case '*':
-            setSymbol(key);
-            break;
-        case '-':
-            setSymbol(key);
-            break;
-        case '+':
-            setSymbol(key);
-            break;
-        case 'Backspace':
-            deleteLastCharacter();
-        case 'Enter':
-            operation();
+        document.addEventListener("DOMContentLoaded", () => {
+            this.inputScreen();
+        });
 
-        default:
-            break;
-    }
-
-});
-function inputScreen() {
-    numberButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            if (lastResult !== "") {
-                expression = "";
-                lastResult = "";
-            }
-            const value = button.getAttribute("data-value") || "";
-
-            if (expression.length < 20) { 
-                expression += value;
-                updateScreen();
+        window.addEventListener('keydown', (event) => {
+            const key = event.key;
+            switch (key) {
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case '.':
+                    this.expression += key;
+                    this.updateScreen();
+                    break;
+                case '/':
+                case '*':
+                case '-':
+                case '+':
+                    this.setSymbol(key);
+                    break;
+                case 'Backspace':
+                    this.deleteLastCharacter();
+                    break;
+                case 'Enter':
+                    this.operation();
+                    break;
+                default:
+                    break;
             }
         });
-    });
 
-    decimalButton?.addEventListener("click", () => {
-        if (lastResult !== "") {
-            expression = "";
-            lastResult = "";
+        document.getElementById('add')?.addEventListener("click", () => this.setSymbol("+"));
+        document.getElementById('subtract')?.addEventListener("click", () => this.setSymbol("-"));
+        document.getElementById('divide')?.addEventListener("click", () => this.setSymbol("/"));
+        document.getElementById('multiply')?.addEventListener("click", () => this.setSymbol("X"));
+        document.getElementById('reset')?.addEventListener("click", this.cleanScreen);
+        document.getElementById('del')?.addEventListener("click", this.deleteLastCharacter);
+        document.getElementById('equal')?.addEventListener("click", this.operation);
+
+        this.decimalButton?.addEventListener("click", () => {
+            if (this.lastResult !== "") {
+                this.expression = "";
+                this.lastResult = "";
+            }
+
+            if (this.operatorPressed) {
+                this.expression += "0";
+            }
+
+            const components = this.expression.split(/([+*/-])/);
+            const secondValue = components.slice(-1)[0];
+
+            if (!secondValue.includes(".")) {
+                this.expression += ".";
+            }
+
+            this.operatorPressed = false;
+            this.updateScreen();
+        });
+    }
+
+    inputScreen() {
+        this.numberButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                if (this.lastResult !== "") {
+                    this.expression = "";
+                    this.lastResult = "";
+                }
+                const value = button.getAttribute("data-value") || "";
+
+                if (this.expression.length < 20) {
+                    this.expression += value;
+                    this.updateScreen();
+                }
+            });
+        });
+    }
+
+    setSymbol(symbol : string) {
+        if (this.lastResult !== "") {
+            this.lastResult = "";
         }
-    
-        if (operatorPressed) {
-            expression += "0";
-        }
-    
-        const components = expression.split(/([+*/-])/);
-        const secondValue = components.slice(-1)[0];
-    
-        if (!secondValue.includes(".")) {
-            expression += ".";
-        }
-    
-        operatorPressed = false; 
-        updateScreen();
-    });
-}
-    function setSymbol(symbol: string) {
-        if (lastResult !== "") {
-            lastResult = "";
-        }
-    
-        const lastChar = expression.trim().slice(-1); 
-    
-        if (symbol === '-' && isSymbol(lastChar) && lastChar !== '-') {
-            expression += ' -';
-        } else if (isSymbol(symbol) && isSymbol(lastChar)) {
+
+        const lastChar = this.expression.trim().slice(-1);
+
+        if (symbol === '-' && this.isSymbol(lastChar) && lastChar !== '-') {
+            this.expression += ' -';
+        } else if (this.isSymbol(symbol) && this.isSymbol(lastChar)) {
             return;
         } else {
             if (symbol === "X") {
-                expression += " * ";
+                this.expression += " * ";
             } else {
-                expression += ` ${symbol} `;
+                this.expression += ` ${symbol} `;
             }
         }
-        updateScreen();
+        this.updateScreen();
     }
-    
-    function isSymbol(char: string) {
+
+    isSymbol(char : string) {
         const symbols = ["+", "-", "X", "/"];
         return symbols.includes(char);
     }
-    
-function updateScreen() {
-    const paragraph = scr.querySelector("p");
-    if (paragraph) {
-        paragraph.textContent = expression;
+
+    updateScreen() {
+        const paragraph = this.scr.querySelector("p");
+        if (paragraph) {
+            paragraph.textContent = this.expression;
+        }
     }
-}
-function cleanScreen() {
-    expression = "";
-    lastResult = "";
-    updateScreen();
-}
-function operation() {
-    const resultParagraph = scr.querySelector("p");
-    if (resultParagraph) {
-        try {
-            const sanitizedExpression = expression.replace(/X/g, '*'); 
-            const result = eval(sanitizedExpression);
-            if (isFinite(result)) {
-                resultParagraph.textContent = result.toString();
-                lastResult = result.toString();
-                
-            } else {
+
+    cleanScreen() {
+        this.expression = "";
+        this.lastResult = "";
+        this.updateScreen();
+    }
+
+    operation() {
+        const resultParagraph = this.scr.querySelector("p");
+        if (resultParagraph) {
+            try {
+                const sanitizedExpression = this.expression.replace(/X/g, '*');
+                const result = eval(sanitizedExpression);
+                if (isFinite(result)) {
+                    resultParagraph.textContent = result.toString();
+                    this.lastResult = result.toString();
+                } else {
+                    resultParagraph.textContent = "Error";
+                    this.lastResult = "Error";
+                }
+            } catch (error) {
                 resultParagraph.textContent = "Error";
-                lastResult = "Error";
+                this.lastResult = "Error";
             }
-        } catch (error) {
-            resultParagraph.textContent = "Error";
-            lastResult = "Error";
+        }
+    }
+
+    deleteLastCharacter() {
+        if (this.lastResult !== "") {
+            this.lastResult = "";
+        }
+        if (this.expression.length > 0) {
+            this.expression = this.expression.slice(0, -1);
+            this.updateScreen();
         }
     }
 }
-document.getElementById('add')?.addEventListener("click", () => setSymbol("+"));
-document.getElementById('subtract')?.addEventListener("click", () => setSymbol("-"));
-document.getElementById('divide')?.addEventListener("click", () => setSymbol("/"));
-document.getElementById('multiply')?.addEventListener("click", () => setSymbol("X"));
-document.getElementById('reset')?.addEventListener("click", cleanScreen);
-document.getElementById('del')?.addEventListener("click", deleteLastCharacter);
-document.getElementById('equal')?.addEventListener("click", operation);
 
-function deleteLastCharacter() {
-    if (lastResult !== "") {
-        lastResult = "";
-    }
-    if (expression.length > 0) {
-        expression = expression.slice(0, -1);
-        updateScreen();
-    }
-}
+const calculator = new Calculator();
