@@ -1,0 +1,55 @@
+#myForm{
+   padding-top: 2em;
+   display: grid;
+   grid-template: repeat(3,1fr)/repeat(3,1fr);
+   gap: 10px;
+}
+label{
+font-weight: bold;
+}
+#accept{
+   height: 2em;
+   align-self: center;
+}
+#check{
+   display: flex;
+   align-items: center;
+   padding-bottom: 15px;
+}
+#submit{
+   background-color: blue;
+   color: white;
+   height: 3em;
+   width: 8em;
+   border-radius: 7px;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   -ms-border-radius: 7px;
+   -o-border-radius: 7px;
+}
+
+.input-container {
+   display: flex;
+   align-items: center;
+   width: 250px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #f2f2f2;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+}
+ 
+ .prefix {
+   background-color: grey; 
+   color: black; 
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+ }
+ 
+ .input-container input {
+   border: none;
+   outline: none;
+   flex: 1;
+ }

@@ -1,0 +1,682 @@
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+
+    & img {
+        position: absolute;
+    }
+
+}
+
+h1 {
+    font-size: 30px;
+}
+
+#floren {
+    position: absolute;
+    top: 32%;
+    left: 44%;
+    z-index: 1;
+    height: 20em;
+    width: 20em;
+}
+
+#brazil,
+#france {
+    height: 10em;
+    width: 10em;
+}
+
+#badge {
+    height: 12em;
+    width: 9em;
+}
+
+#champions {
+    height: 20em;
+    width: 20em
+}
+
+#copa {
+    height: 18em;
+    width: 19em
+}
+
+#ligaEa {
+    height: 18em;
+    width: 18em
+}
+
+#fcb {
+    height: 18em;
+    width: 18em;
+}
+
+#atm {
+    height: 12em;
+    width: 12em;
+}
+
+#premier {
+    height: 12em;
+    width: 15em;
+}
+
+#superliga {
+    height: 15em;
+    width: 15em;
+}
+
+#mbappe {
+    height: 14em;
+    width: 15em;
+}
+
+#top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+.progressEat {
+    top: 25em;
+    left: 10em;
+    width: 25%;
+    background-color: black;
+    height: 2em;
+    border-radius: 16px;
+    position: absolute;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+}
+
+.progressEat .progress-bar {
+    width: 0;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+}
+
+.progressPlay {
+    top: 25em;
+    width: 25%;
+    right: 12em;
+    background-color: black;
+    height: 2em;
+    border-radius: 16px;
+    position: absolute;
+}
+
+.progressPlay .progress-bar2 {
+    width: 0;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+}
+
+.progressFight {
+    bottom: 4em;
+    left: 10em;
+    width: 25%;
+    background-color: black;
+    height: 2em;
+    border-radius: 16px;
+    position: absolute;
+}
+
+.progressFight .progress-bar3 {
+    width: 0;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+}
+
+.progressSleep {
+    bottom: 4em;
+    right: 12em;
+    width: 25%;
+    background-color: black;
+    height: 2em;
+    border-radius: 16px;
+    position: absolute;
+}
+
+.progressSleep .progress-bar4 {
+    width: 0;
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+}
+
+.progressLife {
+    bottom: 10em;
+    right: 45em;
+    width: 25%;
+    background-color: black;
+    height: 2em;
+    border-radius: 16px;
+    position: absolute;
+}
+
+.progressLife .progress-barLife {
+    height: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+}
+
+#life {
+    position: absolute;
+    top: 52em;
+    right: 60em;
+
+    & p {
+        font-size: 30px;
+    }
+}
+
+#bcEat {
+    background-color: greenyellow;
+    width: 50%;
+    height: 100%;
+
+    & #eat {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        & h1 {
+            position: relative;
+            top: 10em;
+            right: 15em;
+            align-self: flex-end;
+            color: green;
+        }
+
+
+        & button {
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 8em;
+            border: none;
+            background: transparent;
+            padding: 0;
+
+
+        }
+
+    }
+}
+
+
+#bcPlay {
+    background-color: yellow;
+    width: 50%;
+    height: 100%;
+
+    #play {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        & h1 {
+            position: relative;
+            top: 10em;
+            right: 12em;
+            align-self: flex-end;
+            color: #C5E86A;
+        }
+
+
+        & button {
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 8em;
+            border: none;
+            background: transparent;
+            padding: 0;
+
+        }
+    }
+}
+
+#bottom {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+}
+
+#bcFight {
+    background-color: #FF6680;
+    width: 50%;
+    height: 100%;
+
+    #fight {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        & h1 {
+            position: relative;
+            top: 10em;
+            right: 14em;
+            color: red;
+        }
+
+        & button {
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 10em;
+            border: none;
+            background: transparent;
+            padding: 0;
+
+        }
+    }
+}
+
+#bcSleep {
+    background-color: cyan;
+    width: 50%;
+    height: 100%;
+
+    #sleep {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        & h1 {
+            position: relative;
+            top: 10em;
+            right: 12em;
+            color: blue;
+        }
+
+        & button {
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 10em;
+            left: 5em;
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    section {
+        display: flex;
+        flex-direction: column;
+        width: 75vh;
+        height: 120vh;
+    }
+
+    section img {
+        position: absolute;
+    }
+
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #floren {
+        position: absolute;
+        top: 50%;
+        left: 44%;
+        z-index: 1;
+        height: 10em;
+        width: 9em;
+    }
+
+    #brazil,
+    #france {
+        height: 5em;
+        width: 5em;
+    }
+
+    #badge {
+        height: 7em;
+        width: 5em;
+    }
+
+    #champions {
+        height: 9em;
+        width: 9em
+    }
+
+    #copa {
+        height: 8em;
+        width: 8em
+    }
+
+    #ligaEa {
+        height: 7em;
+        width: 7em
+    }
+
+    #fcb {
+        height: 10em;
+        width: 8em;
+    }
+
+    #atm {
+        height: 7em;
+        width: 7em;
+    }
+
+    #premier {
+        height: 7em;
+        width: 7em;
+    }
+
+    #superliga {
+        height: 10em;
+        width: 10em;
+    }
+
+    #mbappe {
+        height: 8em;
+        width: 8em;
+    }
+
+    #top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+    }
+
+    .progressEat {
+        top: 19em;
+        left: 3em;
+        width: 45%;
+        background-color: black;
+        height: 2em;
+        border-radius: 16px;
+        position: absolute;
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        -ms-border-radius: 16px;
+        -o-border-radius: 16px;
+    }
+
+    .progressEat .progress-bar {
+        width: 0;
+        height: 100%;
+        border-radius: 15px;
+        border: 2px solid #ccc;
+        transition: width 0.3s;
+        -webkit-transition: width 0.3s;
+        -moz-transition: width 0.3s;
+        -ms-transition: width 0.3s;
+        -o-transition: width 0.3s;
+    }
+
+    .progressPlay {
+        top: 19em;
+        width: 45%;
+        left: 19em;
+        background-color: black;
+        height: 2em;
+        border-radius: 16px;
+        position: absolute;
+    }
+
+    .progressPlay .progress-bar2 {
+        width: 0;
+        height: 100%;
+        border-radius: 15px;
+        border: 2px solid #ccc;
+        transition: width 0.3s;
+        -webkit-transition: width 0.3s;
+        -moz-transition: width 0.3s;
+        -ms-transition: width 0.3s;
+        -o-transition: width 0.3s;
+    }
+
+    .progressFight {
+        top: 43em;
+        left: 2em;
+        width: 45%;
+        background-color: black;
+        height: 2em;
+        border-radius: 16px;
+        position: absolute;
+    }
+
+    .progressFight .progress-bar3 {
+        width: 0;
+        height: 100%;
+        border-radius: 15px;
+        border: 2px solid #ccc;
+        transition: width 0.3s;
+   
+}
+
+    .progressSleep {
+        top: 43em;
+        left: 19em;
+        width: 45%;
+        background-color: black;
+        height: 2em;
+        border-radius: 16px;
+        position: absolute;
+    }
+
+    .progressSleep .progress-bar4 {
+        width: 0;
+        height: 100%;
+        border-radius: 15px;
+        border: 2px solid #ccc;
+        transition: width 0.3s;
+    }
+
+    .progressLife {
+        top: 31em;
+    right: 5em;
+    width: 45%;
+        background-color: black;
+        height: 2em;
+        border-radius: 16px;
+        position: absolute;
+    }
+
+    .progressLife .progress-barLife {
+        height: 100%;
+        border-radius: 15px;
+        border: 2px solid #ccc;
+        transition: width 0.3s;
+}
+
+    #life {
+        position: absolute;
+        top: 52em;
+        right: 60em;
+
+        & p {
+            font-size: 30px;
+        }
+    }
+
+    #bcEat {
+        background-color: greenyellow;
+        width: 50%;
+        height: 100%;
+
+        & #eat {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+
+            & h1 {
+                position: relative;
+                top: 7em;
+                right: 5em;
+                align-self: flex-end;
+                color: green;
+            }
+
+
+            & button {
+                display: flex;
+                align-items: center;
+                position: relative;
+                top: 8em;
+                border: none;
+                background: transparent;
+                padding: 3em;
+
+
+            }
+
+        }
+    }
+
+
+    #bcPlay {
+        background-color: yellow;
+        width: 50%;
+        height: 100%;
+
+        #play {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            & h1 {
+                position: relative;
+                top: 6.5em;
+                right: 5em;
+                align-self: flex-end;
+                color: #C5E86A;
+            }
+
+
+            & button {
+                display: flex;
+                align-items: center;
+                position: relative;
+                top: 8em;
+                border: none;
+                background: transparent;
+                padding: 3.5em;
+
+            }
+        }
+    }
+
+    #bottom {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 50%;
+    }
+
+    #bcFight {
+        background-color: #FF6680;
+        width: 50%;
+        height: 100%;
+
+        #fight {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            & h1 {
+                position: relative;
+                top: 7em;
+                right: 5em;
+                color: red;
+            }
+
+            & button {
+                display: flex;
+                align-items: center;
+                position: relative;
+                top: 10em;
+                border: none;
+                background: transparent;
+                padding: 3.5em;
+
+            }
+        }
+    }
+
+    #bcSleep {
+        background-color: cyan;
+        width: 50%;
+        height: 100%;
+
+        #sleep {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 5em;
+            align-items: center;
+
+            & h1 {
+                position: relative;
+                top: 7.2em;
+                right: 4em;
+                color: blue;
+            }
+
+            & button {
+                display: flex;
+                align-items: center;
+                position: relative;
+                top: 10em;
+                left: 5em;
+                border: none;
+                background: transparent;
+                padding: 2em;
+            }
+        }
+    }
+
+}

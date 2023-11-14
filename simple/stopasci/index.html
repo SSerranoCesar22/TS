@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style.css">
+    <title>Stone, Paper, Scissor</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>🏳 Start the game 🏳</h1>
+    </div>
+    <h2>Score🎯: </h2>
+    <div class="score">
+        <p>Player: <span id="scorePlayer"></span></p>
+        <p>Computer: <span id="scoreComputer"></span></p>
+    </div>
+    <div id="round">
+        <h3>Round:</h3>
+        <p id="startPlay">choose your option to play:</p>
+        <div id="buttons">
+            <button onclick="handleChoice(scissor())"><img src="images/scissor.webp" id="scissor"
+                    alt="scissor"></button>
+            <button onclick="handleChoice(paper())"><img src="images/paper.jpg" id="paper" alt="paper"> </button>
+            <button onclick="handleChoice(stone())"><img src="images/stone.png" id="stone" alt="stone"></button>
+        </div>
+    </div>
+    <div id="result">
+        <p>Player: <span id="resultPl"></span></p>
+        <p id="cp">Computer: <span id="resultIa"></span></p>
+    </div>
+
+        <div id="play">
+            <button onclick="keepPlaying()">keep playing ⏯</button>
+            <button onclick="restart()">restart the game 🔄</button>
+            <button onclick="leftTheGame()">left the game 🚪</button>
+        </div>
+    <script src="outputFilesJS/main.js"></script>
+</body>
+
+</html>
