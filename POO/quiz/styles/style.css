@@ -1,0 +1,102 @@
+body {
+    background-color: greenyellow;
+    text-align: center;
+}
+
+h1 {
+    padding-top: 2em;
+    font-size: 40px;
+}
+
+#quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    & p {
+        font-size: 30px;
+    }
+    
+    & input {
+        display: flex;
+        flex-direction: row;
+        margin-left: 10em;
+        width: 20em;
+        height: 5em;
+        
+    }
+    
+    
+    & .answer {
+        background-color: salmon;
+        color: white;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+        text-align: center;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        margin-left: 0;
+    }
+    
+   & .answer:hover {
+        background-color: blue;
+        /* Otros estilos de tu elección */
+    }
+    
+}
+#isCorrect{
+    
+    font-family: 'Monoton', cursive;
+
+}
+.score{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 25em;
+    margin-bottom: 10px;
+    background-color: cyan; /* Cambia a tu color deseado */
+    color: #FFFFFF; /* Cambia a tu color deseado */
+    padding: 5px 10px; /* Añade espaciado alrededor del texto */
+    border: 2px solid cyan; /* Cambia a tu color deseado */
+    border-radius: 8px; /* Ajusta según sea necesario */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#correct,
+#fail {
+    animation: parpadeo 3s infinite;
+    -webkit-animation: parpadeo 3s infinite;
+}
+#myForm{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#restartGame {
+    width: 20em;
+    height: 5em;
+    background-color: salmon;
+    color: white;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 46.5em;
+    margin-bottom: 10px;
+}

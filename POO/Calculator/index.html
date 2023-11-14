@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator ➕➖✖➗</title>
+    <link rel="stylesheet" href="Style/style.css">
+</head>
+
+<body>
+    <h1>My calculator ➕➖✖➗</h1>
+    <section>
+        <div id="screen">
+            <p></p>
+        </div>
+        <div class="button">
+            <div id="top">
+                <button class="number" data-value="7">7</button>
+                <button class="number" data-value="8">8</button>
+                <button class="number" data-value="9">9</button>
+                <button id="del" onclick="deleteLastCharacter()"><p>DEL</p></button>
+            </div>
+            <div id="medium">
+                <button class="number" data-value="4">4</button>
+                <button class="number" data-value="5">5</button>
+                <button class="number" data-value="6">6</button>
+                <button id="add" data-value="+" >+</button>
+            </div>
+            <div id="medium2">
+                <button class="number" data-value="1">1</button>
+                <button class="number" data-value="2">2</button>
+                <button class="number" data-value="3">3</button>
+                <button id="subtract" data-value="-">-</button>
+            </div>
+            <div id="medium3">
+                <button class="decimal" data-value=".">.</button>
+                <button class="number" data-value="0">0</button>
+                <button id="divide" data-value="/" >/</button>
+                <button id="multiply" data-value="X" >X</button>
+            </div>
+            <div id="bottom">
+                <button id="reset" onclick="cleanScreen()" ><p>RESET</p></button>
+                <button onclick="operation()" id="equal">=</button>
+            </div>
+        </div>
+    </section>
+    <script src="outputFilesJS/main.js"></script>
+</body>
+
+</html>

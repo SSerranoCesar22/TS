@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ #buttonSwitch{
+    position: absolute;
+    left: 46%;}
+#adjustLigth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.progress-container1,.progress-container2, .progress-container3 {
+    width: 100%;
+    background-color: #eee;
+    height: 2em;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: width 0.3s;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#value,#value2,#value3 {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    color: white;
+}
+#range {
+    width: 100%;
+    margin-top: 10px;
+}
+#ligth img {
+    opacity: 0.5;
+    transition: opacity 0.3s ,transform 0.2s;
+    -webkit-transition: opacity 0.3s ,transform 0.2s;
+    -moz-transition: opacity 0.3s ,transform 0.2s;
+    -ms-transition: opacity 0.3s ,transform 0.2s;
+    -o-transition: opacity 0.3s ,transform 0.2s;
+    pointer-events: none;
+}
+#progress2{
+    display: block;
+}
